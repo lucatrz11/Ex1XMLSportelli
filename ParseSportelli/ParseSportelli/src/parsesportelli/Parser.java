@@ -35,6 +35,8 @@ public class Parser {
         Document document;
         Element root, element;
         NodeList nodelist;
+        NodeList listnode;
+        int conta = 0;
         Sportello sportello;
         // creazione dell’albero DOM dal documento XML
         factory = DocumentBuilderFactory.newInstance();
@@ -45,7 +47,17 @@ public class Parser {
         nodelist = root.getElementsByTagName("tr");
         if (nodelist != null && nodelist.getLength() > 0) {
             for (int i = 0; i < nodelist.getLength(); i++) {
-                element = (Element) nodelist.item(i);
+                listnode = root.getElementsByTagName("td");
+                if (listnode.getLength() == 4) {
+                    if (conta == 0) {
+                        conta++;
+                    } else if (conta != 0) {
+                        for (int j = 0; j < listnode.getLength(); j++) {
+                            element = (Element) listnode.item(i);
+                        }
+                    }
+                }
+
                 //sportello = getLink(element);
                 //sportelli.add(sportello);
             }

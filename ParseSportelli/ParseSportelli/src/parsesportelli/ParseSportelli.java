@@ -6,6 +6,7 @@
 package parsesportelli;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
@@ -28,11 +29,11 @@ public class ParseSportelli {
         } catch (ParserConfigurationException | SAXException | IOException exception) {
             System.out.println("Errore!");
         }
-        /*System.out.println("Numero di libri: " + link.size());
-        Iterator iterator = link.iterator();
+        System.out.println("Numero di sportelli: " + sportello.size());
+        Iterator iterator = sportello.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next().toString());
-        }*/
+        }
     }
 
 }
