@@ -19,7 +19,6 @@ public class ParseSportelli {
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String[] args) {
         // TODO code application logic here
         List sportello = null;
@@ -29,7 +28,7 @@ public class ParseSportelli {
         } catch (ParserConfigurationException | SAXException | IOException exception) {
             System.out.println("Errore!");
         }
-		/*System.out.println("Numero di libri: " + link.size());
+        /*System.out.println("Numero di libri: " + link.size());
         Iterator iterator = link.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next().toString());

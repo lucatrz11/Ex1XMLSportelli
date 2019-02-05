@@ -7,7 +7,7 @@ package parsesportelli;
 
 /**
  *
- * 
+ *
  * @author trezzi_luca
  */
 public class Giorno {

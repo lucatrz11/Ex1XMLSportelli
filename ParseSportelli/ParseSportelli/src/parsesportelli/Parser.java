@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * 
+ *
  * @author trezzi_luca
  */
 public class Parser {
@@ -28,7 +28,7 @@ public class Parser {
     public Parser() {
         sportelli = new ArrayList();
     }
-    
+
     public List parseDocument(String filename) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory factory;
         DocumentBuilder builder;
@@ -52,8 +52,7 @@ public class Parser {
         }
         return sportelli;
     }
-        
-        
+
 //    private Link getLink(Element element) {
 //        Link link;
 //        String l=element.getAttribute("href");
@@ -65,5 +64,4 @@ public class Parser {
 //        link = new Link(t,l);
 //        return link;
 //    }
-    
 }
