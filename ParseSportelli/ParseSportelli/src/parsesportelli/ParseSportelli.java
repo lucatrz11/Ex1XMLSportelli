@@ -19,6 +19,7 @@ public class ParseSportelli {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
         // TODO code application logic here
         List sportello = null;

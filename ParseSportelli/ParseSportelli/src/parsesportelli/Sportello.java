@@ -22,7 +22,7 @@ public class Sportello {
         this.docente = "";
         this.email = "";
         this.giorno1 = new Giorno();
-		this.giorno2 = new Giorni();
+		this.giorno2 = new Giorno();
     }
 
     public Sportello(String materia, String docente, String email,Giorno giorno1,Giorno giorno2) {
@@ -68,7 +68,7 @@ public class Sportello {
         return giorno2;
     }
 
-    public void setGiorno1(Giorno giorno2) {
+    public void setGiorno2(Giorno giorno2) {
         this.giorno2 = giorno2;
     }
 
