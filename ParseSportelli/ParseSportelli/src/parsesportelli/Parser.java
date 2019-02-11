@@ -54,6 +54,9 @@ public class Parser {
                     } else if (conta != 0) {
                         for (int j = 0; j < listnode.getLength(); j++) {
                             element = (Element) listnode.item(i);
+                            if (getTextValue(element, "td") == "DISCIPLINA") {
+                                
+                            }
                         }
                     }
                 }
@@ -76,4 +79,22 @@ public class Parser {
 //        link = new Link(t,l);
 //        return link;
 //    }
+    private String getTextValue(Element element, String tag) {
+        String value = null;
+        NodeList node;
+
+        node = element.getElementsByTagName(tag);
+        if (node != null && node.getLength() > 0) {
+            value = node.item(0).getFirstChild().getNodeValue();
+        }
+        return value;
+    }
+
+    private int getIntValue(Element element, String tag) {
+        return Integer.parseInt(getTextValue(element, tag));
+    }
+
+    private float getFloatValue(Element element, String tag) {
+        return Float.parseFloat(getTextValue(element, tag));
+    }
 }

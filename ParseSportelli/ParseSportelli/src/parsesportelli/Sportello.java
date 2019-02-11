@@ -16,7 +16,7 @@ public class Sportello {
     private String email;
     private Giorno giorno1;
     private Giorno giorno2;
-
+    
     public Sportello() {
         this.materia = "";
         this.docente = "";
