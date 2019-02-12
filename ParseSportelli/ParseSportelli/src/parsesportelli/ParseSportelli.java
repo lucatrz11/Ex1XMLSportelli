@@ -33,11 +33,11 @@ public class ParseSportelli {
         }
         String s = dom.toCSV(sportello);
         mioF.SalvaSuFile(s);
-
-        Iterator iterator = sportello.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next().toString());
-        }
+//
+//        Iterator iterator = sportello.iterator();
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next().toString());
+//        }
     }
 
 }
