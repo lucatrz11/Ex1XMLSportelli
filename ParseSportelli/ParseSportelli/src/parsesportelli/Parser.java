@@ -35,9 +35,10 @@ public class Parser {
         Document document;
         Element root, element;
         NodeList nodelist;
-        NodeList listnode;
-        int conta = 0;
+        int j = 0;
+
         Sportello sportello;
+        boolean trovato = false;
         // creazione dell’albero DOM dal documento XML
         factory = DocumentBuilderFactory.newInstance();
         builder = factory.newDocumentBuilder();
@@ -47,54 +48,64 @@ public class Parser {
         nodelist = root.getElementsByTagName("tr");
         if (nodelist != null && nodelist.getLength() > 0) {
             for (int i = 0; i < nodelist.getLength(); i++) {
-                listnode = root.getElementsByTagName("td");
-                if (listnode.getLength() == 4) {
-                    if (conta == 0) {
-                        conta++;
-                    } else if (conta != 0) {
-                        for (int j = 0; j < listnode.getLength(); j++) {
-                            element = (Element) listnode.item(i);
-                            if (getTextValue(element, "td") == "DISCIPLINA") {
-                                
-                            }
-                        }
-                    }
-                }
+                element = (Element) nodelist.item(i);
+                String parola = element.getFirstChild().getTextContent();
 
-                //sportello = getLink(element);
-                //sportelli.add(sportello);
+                if (parola != null) {
+                    if (parola.equals("DISCIPLINA")) {
+                        sportelli.add(element);
+                        trovato = true;
+                        j++;
+                    } else if (element.getChildNodes().getLength() == 4 && trovato == true) {
+                        sportelli.add(element);
+                        j++;
+                    }
+                } else {
+                    trovato = false;
+                }
             }
+
         }
         return sportelli;
     }
 
-//    private Link getLink(Element element) {
-//        Link link;
-//        String l=element.getAttribute("href");
-//        
-//        String t = element.getFirstChild().getNodeValue();
-//        /*String titolo = getTextValue(element, "titolo");
-//        String autore = getTextValue(element, "autore");
-//        float prezzo = getFloatValue(element, "prezzo");*/
-//        link = new Link(t,l);
-//        return link;
-//    }
-    private String getTextValue(Element element, String tag) {
-        String value = null;
-        NodeList node;
+    public String toCSV(List testo) {
 
-        node = element.getElementsByTagName(tag);
-        if (node != null && node.getLength() > 0) {
-            value = node.item(0).getFirstChild().getNodeValue();
+        List lista1 = new ArrayList();
+
+        lista1 = getText((NodeList) testo.get(0), "td");
+
+        String stringa = "";
+
+        stringa += lista1.get(0) + ";";
+        stringa += lista1.get(1) + ";";
+        stringa += lista1.get(2) + ";";
+        stringa += lista1.get(3) + "\r\n";
+
+        List lista2 = new ArrayList();
+        for (int i = 1; i < testo.size() - 1; i = i + 2) {
+
+            lista1 = getText((NodeList) testo.get(i), "td");
+            lista2 = getText((NodeList) testo.get(i + 1), "td");
+
+            stringa += lista1.get(0) + " " + lista2.get(0) + ";";
+            stringa += lista1.get(1) + " " + lista2.get(1) + ";";
+            stringa += lista1.get(2) + " " + lista2.get(2) + ";";
+            stringa += lista1.get(3) + " " + lista2.get(3) + "\n";
         }
-        return value;
+
+        return stringa;
     }
 
-    private int getIntValue(Element element, String tag) {
-        return Integer.parseInt(getTextValue(element, tag));
-    }
+    public List getText(NodeList nodelist, String tag) {
+        List testo = new ArrayList();
 
-    private float getFloatValue(Element element, String tag) {
-        return Float.parseFloat(getTextValue(element, tag));
+        if (nodelist != null && nodelist.getLength() > 0) {
+            testo.add(nodelist.item(0).getTextContent());
+            testo.add(nodelist.item(1).getTextContent());
+            testo.add(nodelist.item(2).getTextContent());
+            testo.add(nodelist.item(3).getTextContent());
+        }
+        return testo;
     }
 }

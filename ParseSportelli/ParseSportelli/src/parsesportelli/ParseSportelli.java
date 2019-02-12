@@ -20,16 +20,20 @@ public class ParseSportelli {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
         List sportello = null;
         Parser dom = new Parser();
+        mioFile mioF = new mioFile();
+
         try {
             sportello = dom.parseDocument("sportelliDidattici.xml");
         } catch (ParserConfigurationException | SAXException | IOException exception) {
             System.out.println("Errore!");
         }
-        System.out.println("Numero di sportelli: " + sportello.size());
+        String s = dom.toCSV(sportello);
+        mioF.SalvaSuFile(s);
+
         Iterator iterator = sportello.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next().toString());
