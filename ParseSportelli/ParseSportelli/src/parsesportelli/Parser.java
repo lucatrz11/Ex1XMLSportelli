@@ -51,9 +51,9 @@ public class Parser {
                 element = (Element) nodelist.item(i);
                 String contenuto = element.getFirstChild().getTextContent();
                 if (contenuto != null) {
-                    if (contenuto.equals("N.B. Gli orari degli incontri potrebbero anche essere modificati in accordo con il docente/studente.")) {
-                        trovato = false;
-                    }
+//                    if (contenuto.equals("N.B. Gli orari degli incontri potrebbero anche essere modificati in accordo con il docente/studente.")) {
+//                        trovato = false;
+//                    }
                     if (contenuto.equals("DISCIPLINA")) {
                         sportelli.add(element);
                         trovato = true;
